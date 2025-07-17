@@ -1,2 +1,2 @@
-# MiTiendita
-Ecommerce de Abarrotes
+# Derma901
+Skin care products e-store.
