@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
     sku:{
-        type:NumString,
+        type:String,
         required: true,
     },
     name:{
@@ -32,7 +32,7 @@ const productSchema = new mongoose.Schema({
         trim:true,
     }],
     category:{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
         required: true
     }
@@ -40,4 +40,4 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = Product;
+export default Product;

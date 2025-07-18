@@ -1,15 +1,23 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const dbURI = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DB;
+const dbConnection = async () => {
+  try {
+    const dbURI = process.env.MONGODB_URI;
+    const dbName = process.env.MONGODB_DB;
 
-try{
-    await mongoose.connect(`${dbURI}/${dbName}`,{});
+    await mongoose.connect(`${dbURI}/${dbName}`, {
+      // If you use MongoDB < 8 you have to use this:
+      //useNewUrlParser: true,
+      //useUnifiedTopology: true
+    });
     console.log(`MongoDB is connected`);
-}catch{
+  } catch (error) {
     console.log(error);
     process.exit(1);
+  }
 };
+
+export default dbConnection;
